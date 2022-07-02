@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
+import NextCors from 'nextjs-cors'
 import { v4 as uuidv4 } from 'uuid'
 import sanitize from 'mongo-sanitize'
 
@@ -20,6 +21,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
+  await NextCors(req, res, {
+    methods: ['POST'],
+    origin: '*',
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  })
+
   if (req.method === 'GET') {
     const query = req.query as {
       aid?: string
