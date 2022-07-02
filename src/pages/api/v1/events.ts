@@ -4,10 +4,9 @@ import NextCors from 'nextjs-cors'
 import validator from 'validator'
 import dayjs from 'dayjs'
 import requestIp from 'request-ip'
+import sanitize from 'mongo-sanitize'
 
-const version = require('../../../package.json').version
-
-import clientPromise from '../../lib/mongodb'
+import clientPromise from '../../../lib/mongodb'
 
 type Data = {
   version?: string
@@ -16,7 +15,11 @@ type Data = {
 
 type RequestBody = {
   uid?: string
-  collection?: string
+  aid?: string
+  category?: string
+  action?: string
+  status?: string
+  data?: string
 }
 
 export default async function handler(
@@ -25,15 +28,11 @@ export default async function handler(
 ) {
   // Run the cors middleware
   await NextCors(req, res, {
-    // Options
-    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    methods: ['POST'],
     origin: '*',
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   })
 
-  if (req.method === 'GET') {
-    res.status(200).json({ version })
-  }
   if (req.method === 'POST') {
     if ('body' in req) {
       const body = req.body as RequestBody
@@ -47,6 +46,9 @@ export default async function handler(
 
       if (typeof authorization === 'string') {
         authorization = authorization.trim()
+      } else {
+        res.status(401).json({ error: 'authorization is not valid' })
+        return
       }
 
       // check if space in the authorization header
@@ -55,7 +57,7 @@ export default async function handler(
         return
       }
 
-      const token = authorization?.split(' ')[1]
+      const token = sanitize(authorization?.split(' ')[1])
 
       if (validator.isUUID(token, 4)) {
         res.status(401).json({ error: 'authorization is not valid' })
@@ -67,50 +69,72 @@ export default async function handler(
         return
       }
 
-      if (!body.collection) {
-        res.status(400).json({ error: 'collection is required' })
+      if (!body.aid) {
+        res.status(400).json({ error: 'aid is required' })
         return
       }
 
-      const uid = body.uid
-      const collection = body.collection
+      const uid = sanitize(body.uid) // user id
+      const aid = sanitize(body.aid) // app id
+
+      const eventCategory = sanitize(body.category || '')
+      const eventAction = sanitize(body.action || '')
+      const eventStatus = sanitize(body.status || '')
+      const eventData = sanitize(body.data || '')
 
       const client = await clientPromise
-      const db = client.db('analytics')
+      const metadb = client.db('meta')
+      const eventsdb = client.db('events')
 
       const ipAddress = requestIp.getClientIp(req)
 
       // verify user
 
-      const query = {
+      const user = await metadb.collection('users').findOne({
         uid,
-      }
-
-      const user = await db.collection('users').findOne(query)
+      })
 
       if (!user) {
-        res.status(400)
+        res.status(400).end()
         return
       }
 
       if (user.token !== token) {
-        res.status(401)
+        res.status(401).end()
+        return
+      }
+
+      // verify aid
+
+      const app = await metadb.collection('apps').findOne({
+        aid,
+      })
+
+      if (!app) {
+        res.status(400).end()
         return
       }
 
       const data = {
         timestamp: dayjs().unix(),
         uid,
-        collection,
+        eventCategory,
+        eventAction,
+        eventStatus,
+        eventData,
         ipAddress,
       }
 
-      await db.collection(collection).insertOne(data)
+      await eventsdb.collection(aid).insertOne(data)
 
-      res.status(201)
+      res.status(201).end()
+      return
     } else {
       res.status(400).json({ error: 'Invalid request' })
+      return
     }
+  } else {
+    res.status(405).end()
     return
   }
 }

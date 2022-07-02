@@ -1,11 +1,11 @@
-import clientPromise from '../../lib/mongodb'
+import clientPromise from '../../../lib/mongodb'
 
-export default async (_req, res) => {
+const func = async (_req, res) => {
   //   const { db } = await clientPromise()
 
   const client = await clientPromise
 
-  const db = client.db(process.env.MONGODB_DB)
+  const db = client.db(`sample_mflix`)
 
   const movies = await db
     .collection('movies')
@@ -16,3 +16,5 @@ export default async (_req, res) => {
 
   res.json(movies)
 }
+
+export default func

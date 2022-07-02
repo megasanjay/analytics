@@ -3,8 +3,9 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import NextCors from 'nextjs-cors'
 import { v4 as uuidv4 } from 'uuid'
 import validator from 'validator'
+import sanitize from 'mongo-sanitize'
 
-import clientPromise from '../../lib/mongodb'
+import clientPromise from '../../../lib/mongodb'
 
 type Data = {
   uid?: string
@@ -36,19 +37,19 @@ export default async function handler(
         return
       }
 
-      if (!validator.isUUID(body.uid, 4)) {
+      const uid = sanitize(body.uid)
+
+      if (!validator.isUUID(uid, 4)) {
         res.status(400).json({ error: 'uid is not a valid uuid' })
         return
       }
 
-      const uid = body.uid
-
       const client = await clientPromise
-      const db = client.db('analytics')
+      const db = client.db('meta')
 
       const data = {
         uid,
-        token: uuidv4(),
+        token: uuidv4().replace(/-/g, ''),
       }
 
       const query = {
@@ -70,6 +71,9 @@ export default async function handler(
     } else {
       res.status(400).json({ error: 'Invalid request' })
     }
+    return
+  } else {
+    res.status(404).end()
     return
   }
 }
