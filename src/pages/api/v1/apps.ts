@@ -12,7 +12,8 @@ type Data = {
 }
 
 type RequestBody = {
-  name: string
+  name?: string
+  aid?: string
 }
 
 export default async function handler(
@@ -76,18 +77,18 @@ export default async function handler(
     if ('body' in req) {
       const body = req.body as RequestBody
 
-      if (!body.name) {
-        res.status(400).json({ error: 'name is required' })
+      if (!body.aid) {
+        res.status(400).json({ error: 'aid is required' })
         return
       }
 
-      const appName = sanitize(body.name)
+      const aid = sanitize(body.aid)
 
       const client = await clientPromise
       const db = client.db('meta')
 
       const query = {
-        name: appName,
+        aid,
       }
 
       // delete app
