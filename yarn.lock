@@ -155,12 +155,12 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@iconify/react@^3.2.2":
+"@iconify/react@3.2.2":
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/@iconify/react/-/react-3.2.2.tgz#ab5241dc01562076bae3b0c22238aff7e5f029cc"
   integrity sha512-z3+Jno3VcJzgNHsN5mEvYMsgCkOZkydqdIwOxjXh45+i2Vs9RGH68Y52vt39izwFSfuYUXhaW+1u7m7+IhCn/g==
 
-"@mantine/core@^4.2.12":
+"@mantine/core@4.2.12":
   version "4.2.12"
   resolved "https://registry.yarnpkg.com/@mantine/core/-/core-4.2.12.tgz#7c07a352e7f2ea13f693ddd0d1b77d8898593e6c"
   integrity sha512-PZcVUvcSZiZmLR1moKBJFdFIh6a4C+TE2ao91kzTAlH5Qb8t/V3ONbfPk3swHoYr7OSLJQM8vZ7UD5sFDiq0/g==
@@ -171,55 +171,55 @@
     react-popper "^2.2.5"
     react-textarea-autosize "^8.3.2"
 
-"@mantine/dates@^4.2.12":
+"@mantine/dates@4.2.12":
   version "4.2.12"
   resolved "https://registry.yarnpkg.com/@mantine/dates/-/dates-4.2.12.tgz#9d07cfed274df66c7367ff9dceaa13f57409613e"
   integrity sha512-zyCZbU0Hx4pH3ylIFNvvg5EFh4b5ZnIE1nBWO0Yes9XI4j3exa6s5d1YQ5G8Hn+hrKWlu4YHVlXB08J0em83EA==
 
-"@mantine/dropzone@^4.2.12":
+"@mantine/dropzone@4.2.12":
   version "4.2.12"
   resolved "https://registry.yarnpkg.com/@mantine/dropzone/-/dropzone-4.2.12.tgz#33a8be3a5b18680a4adca88fac114191daad8f1a"
   integrity sha512-zGxur1DUeiQm3t4jFam4WI1ZNbrNJ/lMV1ycOJj6CjnWNvzcJwiTBvLDPsMr0fiF4vxEQMlv+H7xwhuJedmJfw==
   dependencies:
     react-dropzone "^11.4.2"
 
-"@mantine/form@^4.2.12":
+"@mantine/form@4.2.12":
   version "4.2.12"
   resolved "https://registry.yarnpkg.com/@mantine/form/-/form-4.2.12.tgz#c204fa17b0232027d9fb0eeb2a6b214708d9e014"
   integrity sha512-CnpkzZr7VVekN3gg/4fMG9DYEqDsOg1jJGGxFKZ7GjR4liwEOsL3FvC+Szi3OlI0ytfLFOg8zU8RCoEO758sQA==
 
-"@mantine/hooks@^4.2.12":
+"@mantine/hooks@4.2.12":
   version "4.2.12"
   resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-4.2.12.tgz#8dfbd23763959b721f5c5c784b3c412bb7c9823a"
   integrity sha512-/2GOsgv1tAUFBXOUV0YBZdDZHj3pHN82Sv1oI/hJMjfIT3ZkGeeiJO8Cw9cBcn76t6caP6Czi3hcuKhjz71O+A==
 
-"@mantine/modals@^4.2.12":
+"@mantine/modals@4.2.12":
   version "4.2.12"
   resolved "https://registry.yarnpkg.com/@mantine/modals/-/modals-4.2.12.tgz#591ec0c3034ec0c3de312bec256797b574e1b9e0"
   integrity sha512-UEcz2kZIt5fQELTuV0YKtqNzNVs+lyP8aqoNJAUgl3u4EKg4YS0WTTqCOJ6ACtAdmCc10lemgQ3zV/HnNh15Ng==
 
-"@mantine/next@^4.2.12":
+"@mantine/next@4.2.12":
   version "4.2.12"
   resolved "https://registry.yarnpkg.com/@mantine/next/-/next-4.2.12.tgz#02c3893803c098f492d1be5ae041dd2caf4071c4"
   integrity sha512-Wpjjp5lLy14gFV84EV3Yu4j1uLFugf8mSwQOJa+gD5IT9ENpOHEGykmo7SHS3EormFLPE9seDD28dACC2sNM5Q==
   dependencies:
     "@mantine/ssr" "4.2.12"
 
-"@mantine/notifications@^4.2.12":
+"@mantine/notifications@4.2.12":
   version "4.2.12"
   resolved "https://registry.yarnpkg.com/@mantine/notifications/-/notifications-4.2.12.tgz#914cf8efcae7a897c1075f09a39a730a505a02ed"
   integrity sha512-Ip+8KxH9P1i8uZnhv2zTU+OFJjYBs3122KnVYy6vLsR83agRuY1KzbxjlOVVmP2Dq5aJX2pvefWWjA++NzhNtA==
   dependencies:
     react-transition-group "^4.4.2"
 
-"@mantine/prism@^4.2.12":
+"@mantine/prism@4.2.12":
   version "4.2.12"
   resolved "https://registry.yarnpkg.com/@mantine/prism/-/prism-4.2.12.tgz#728169dfad2a05a2bf920ba0bf16acf66fb95460"
   integrity sha512-zFwkBs0+4kaYnKPWbFaulM6cZGQCJgQzxTzXmZsLoBn5d/3U7pIbm0wX9ZvDoEscpN4YTp4WqvZGYGOMkIjgZw==
   dependencies:
     prism-react-renderer "^1.2.1"
 
-"@mantine/rte@^4.2.12":
+"@mantine/rte@4.2.12":
   version "4.2.12"
   resolved "https://registry.yarnpkg.com/@mantine/rte/-/rte-4.2.12.tgz#f6c340dc5eb0c79a602474e51587403ac1c5a467"
   integrity sha512-gG0Mm29eHbJcHszLCT/Dv0R3rJWLXM73Bh5ii5q2kr7nY5haRXqFz1Rqb37TnnCofADSolbFZPOkztCBVtgdRA==
@@ -228,7 +228,7 @@
     quill-mention "^3.0.8"
     react-quill "2.0.0-beta.4"
 
-"@mantine/spotlight@^4.2.12":
+"@mantine/spotlight@4.2.12":
   version "4.2.12"
   resolved "https://registry.yarnpkg.com/@mantine/spotlight/-/spotlight-4.2.12.tgz#9296f8997034c23ba89e46299ebf58a53507ad80"
   integrity sha512-eUOV1rN8iCCQZc1es8Kq9Wgrbo3xuKb4KqY7yBRvP5E6FQqwZ0F2RlwT4YDWkYOPisFpeuVeoZa4kiOs3rS0Fw==
@@ -918,7 +918,7 @@ damerau-levenshtein@^1.0.7:
   resolved "https://registry.yarnpkg.com/damerau-levenshtein/-/damerau-levenshtein-1.0.8.tgz#b43d286ccbd36bc5b2f7ed41caf2d0aba1f8a6e7"
   integrity sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==
 
-dayjs@^1.11.4:
+dayjs@1.11.4:
   version "1.11.4"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.4.tgz#3b3c10ca378140d8917e06ebc13a4922af4f433e"
   integrity sha512-Zj/lPM5hOvQ1Bf7uAvewDaUcsJoI6JmNqmHhHl3nyumwe0XHwt8sWdOVAPACJzCebL8gQCi+K49w7iKWnGwX9g==
