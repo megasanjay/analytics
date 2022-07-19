@@ -5,6 +5,8 @@ import { useRouter } from 'next/router'
 
 import { useSession, signIn, signOut } from 'next-auth/react'
 
+import { Group, Button } from '@mantine/core'
+
 export default function Navbar() {
   const { data: session, status } = useSession({
     required: true,
@@ -48,6 +50,11 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+      <Group grow spacing={0}>
+        <Button variant="default">First</Button>
+        <Button variant="default">Second</Button>
+        <Button variant="default">Third</Button>
+      </Group>
     </nav>
   )
 }
