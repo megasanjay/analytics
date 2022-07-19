@@ -7,7 +7,9 @@ import { useSession, signIn, signOut } from 'next-auth/react'
 
 import { Group, Button } from '@mantine/core'
 
-export default function Navbar() {
+import { Icon } from '@iconify/react'
+
+export default function Navbar(props) {
   const { data: session, status } = useSession({
     required: true,
     onUnauthenticated() {
@@ -40,12 +42,13 @@ export default function Navbar() {
               </button>
             )}
             {!session && (
-              <button
-                className="mr-2 mb-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              <Button
+                leftIcon={<Icon icon="akar-icons:github-fill" />}
+                className="bg-black transition-all hover:bg-slate-800"
                 onClick={signIn}
               >
-                Sign In
-              </button>
+                Login with GitHub
+              </Button>
             )}
           </div>
         </div>
